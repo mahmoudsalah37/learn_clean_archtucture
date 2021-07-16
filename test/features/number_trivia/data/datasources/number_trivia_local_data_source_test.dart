@@ -50,15 +50,14 @@ void main() {
     final tNumberTriviaModel =
         NumberTriviaModel(text: 'test trivia', number: 1);
     test('should call SharedPreferences to cache the data', () async {
-      //TODO
-      // // arrange
+      // arrange
 
-      // // act
-      // dataSource.cacheNumberTrivia(tNumberTriviaModel);
-      // // assert
-      // final expectedJsonString = json.encode(tNumberTriviaModel.toJson());
-      // verify(mockSharedPreferences.setString(
-      //     cachedNumberTrivia, expectedJsonString));
+      // act
+      dataSource.cacheNumberTrivia(tNumberTriviaModel);
+      // assert
+      final expectedJsonString = json.encode(tNumberTriviaModel.toJson());
+      verify(mockSharedPreferences.setString(
+          cachedNumberTrivia, expectedJsonString));
     });
   });
 }

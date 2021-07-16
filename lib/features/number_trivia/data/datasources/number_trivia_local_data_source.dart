@@ -1,6 +1,8 @@
 import 'dart:convert';
 
-import 'package:learn_clean_archtucture/core/error/exceptions.dart';
+import '../../domain/entities/number_trivia.dart';
+
+import '../../../../core/error/exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/number_trivia_model.dart';
@@ -10,7 +12,7 @@ abstract class NumberTriviaLocalDataSource {
   /// the user had an internet connection
   ///
   /// throws a [CacheException] if no cached data is present.
-  Future<NumberTriviaModel?>? getLastNumberTrivia();
+  Future<NumberTrivia?>? getLastNumberTrivia();
 
   Future<void>? cacheNumberTrivia(NumberTriviaModel? triviaToCache);
 }
@@ -23,7 +25,7 @@ class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
   NumberTriviaLocalDataSourceImpl({required this.sharedPreferences});
 
   @override
-  Future<NumberTriviaModel?>? getLastNumberTrivia() async {
+  Future<NumberTrivia?>? getLastNumberTrivia() async {
     final jsonString = sharedPreferences.getString(cachedNumberTrivia);
     if (jsonString != null) {
       return Future.value(NumberTriviaModel.fromJson(json.decode(jsonString)));

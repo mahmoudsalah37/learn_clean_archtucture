@@ -10,21 +10,21 @@ void main() {
   late NetworkInfoImpl networkInfoImpl;
   late MockInternetConnectionChecker mockInternetConnectionChecker;
   setUp(() {
-    networkInfoImpl = NetworkInfoImpl();
+    networkInfoImpl = NetworkInfoImpl(InternetConnectionChecker());
     mockInternetConnectionChecker = MockInternetConnectionChecker();
   });
 
   group('isConnected', () {
     test('should forward the call to DataConnectionChecker.hasConnection',
         () async {
-      // // arrange
-      // when(mockInternetConnectionChecker.hasConnection)
-      //     .thenAnswer((_) async => true);
-      // // act
-      // final result = await networkInfoImpl.isConnected;
-      // //assert
-      // verify(mockInternetConnectionChecker.hasConnection);
-      // expect(result, true);
+      // arrange
+      when(mockInternetConnectionChecker.hasConnection)
+          .thenAnswer((_) async => true);
+      // act
+      final result = await networkInfoImpl.isConnected;
+      //assert
+      verify(mockInternetConnectionChecker.hasConnection);
+      expect(result, true);
     });
   });
 }

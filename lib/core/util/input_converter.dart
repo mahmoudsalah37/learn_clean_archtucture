@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:learn_clean_archtucture/core/error/failures.dart';
+import '../error/failures.dart';
 
 class InputConverter {
   Either<Failure, int?>? stringTOunsignedInteger(String? str) {

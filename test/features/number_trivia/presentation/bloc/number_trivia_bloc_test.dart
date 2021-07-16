@@ -54,17 +54,16 @@ void main() {
       // assert
       verify(mockInputConverter.stringTOunsignedInteger(tNumberString));
     });
-    //TODO
-    // test('Should emit [Error] when the input is invalid', () async {
-    //   // arrange
-    //   when(mockInputConverter.stringTOunsignedInteger(any))
-    //       .thenReturn(Left(InvalidInputFailure()));
-    //   // assert later
-    //   final expected = [Empty(), Error(message: invaildInputFailureMessage)];
-    //   expectLater(bloc.state, emitsInOrder(expected));
-    //   // act
-    //   bloc.add(GetTriviaForConreteNumber(tNumberString));
-    // });
+    test('Should emit [Error] when the input is invalid', () async {
+      // arrange
+      when(mockInputConverter.stringTOunsignedInteger(any))
+          .thenReturn(Left(InvalidInputFailure()));
+      // assert later
+      final expected = [Empty(), Error(message: invaildInputFailureMessage)];
+      expectLater(bloc.state, emitsInOrder(expected));
+      // act
+      bloc.add(GetTriviaForConreteNumber(tNumberString));
+    });
     test('Should get data from concrete use case', () async {
       // arrange
       setUpMockInputConverterSuccess();

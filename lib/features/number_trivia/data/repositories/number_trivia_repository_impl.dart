@@ -1,13 +1,13 @@
-import 'package:learn_clean_archtucture/core/error/exceptions.dart';
-import 'package:learn_clean_archtucture/core/network/netowrk_info.dart';
-import 'package:learn_clean_archtucture/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
-import 'package:learn_clean_archtucture/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart';
-import 'package:learn_clean_archtucture/features/number_trivia/data/models/number_trivia_model.dart';
-
-import '../../domain/entities/number_trivia.dart';
-import '../../../../core/error/failures.dart';
 import 'package:dartz/dartz.dart';
+
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/error/failures.dart';
+import '../../../../core/network/netowrk_info.dart';
+import '../../domain/entities/number_trivia.dart';
 import '../../domain/repositories/number_trivia_repository.dart';
+import '../datasources/number_trivia_local_data_source.dart';
+import '../datasources/number_trivia_remote_data_source.dart';
+import '../models/number_trivia_model.dart';
 
 typedef Future<NumberTriviaModel?>? _ConcreteOrRandomChooser();
 
@@ -29,13 +29,13 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
   }
 
   @override
-  Future<Either<Failure, NumberTriviaModel?>>? getRandomNumberTrivia() async {
+  Future<Either<Failure, NumberTrivia?>>? getRandomNumberTrivia() async {
     return _getTrivia(() {
       return remoteDataSource.getRandomNumberTrivia();
     });
   }
 
-  Future<Either<Failure, NumberTriviaModel?>> _getTrivia(
+  Future<Either<Failure, NumberTrivia?>> _getTrivia(
       _ConcreteOrRandomChooser getConcreteOrRandom) async {
     final isconnected = await networkInfo.isConnected ?? false;
     if (isconnected) {
