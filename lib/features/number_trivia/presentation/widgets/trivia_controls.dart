@@ -36,7 +36,10 @@ class _TriviaControlsState extends State<TriviaControls> {
           children: <Widget>[
             Expanded(
               child: TextButton(
-                child: Text('Search'),
+                child: Text(
+                  'Search',
+                  style: TextStyle(color: Colors.white),
+                ),
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all(Theme.of(context).accentColor),
@@ -47,7 +50,10 @@ class _TriviaControlsState extends State<TriviaControls> {
             SizedBox(width: 10),
             Expanded(
               child: TextButton(
-                child: Text('Get random trivia'),
+                child: Text(
+                  'Get random trivia',
+                  style: TextStyle(color: Colors.white),
+                ),
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all(Theme.of(context).accentColor),
